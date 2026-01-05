@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: mail
+  name: mail
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mail
+  template:
+    metadata:
+      labels:
+        app: mail
+    spec:
+      containers:
+      - image: docker.io/axllent/mailpit:v1.28
+        name: mailpit
+        ports:
+        - name: http
+          containerPort: 8025
+          protocol: TCP
+        - name: smtp
+          containerPort: 1025
+          protocol: TCP
