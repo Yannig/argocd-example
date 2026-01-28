@@ -24,3 +24,16 @@ spec:
         - name: smtp
           containerPort: 1025
           protocol: TCP
+        startupProbe:
+          initialDelaySeconds: 0
+          # Increase failureThreshold for longer startup times
+          # Here we set it to 10 to allow up to 100 seconds (10 * 10s interval)
+          failureThreshold: 10
+          # periodSeconds: 10
+          httpGet: &http-get
+            port: http
+            path: /actuator/health/liveness
+        livenessProbe:
+          httpGet: *http-get
+        readinessProbe:
+          httpGet: *http-get
