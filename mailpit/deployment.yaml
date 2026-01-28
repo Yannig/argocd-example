@@ -32,7 +32,7 @@ spec:
           # periodSeconds: 10
           httpGet: &http-get
             port: http
-            path: /actuator/health/liveness
+            path: /
         livenessProbe:
           httpGet: *http-get
         readinessProbe:
