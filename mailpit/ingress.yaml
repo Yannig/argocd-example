@@ -4,7 +4,7 @@ kind: Ingress
 metadata:
   name: mail
 spec:
-  ingressClassName: nginx
+  ingressClassName: cilium
   rules:
     - host: mailpit.172.21.250.20.nip.io
       http:
