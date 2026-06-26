@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: mail
+spec:
+  ingressClassName: "cilium"
+  rules:
+    - host: $ARGOCD_ENV_HOSTNAME
+      http:
+        paths:
+          - pathType: Prefix
+            backend:
+              service:
+                name: mail
+                port:
+                  name: http
+            path: /

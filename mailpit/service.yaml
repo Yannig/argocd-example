@@ -16,6 +16,6 @@ spec:
     protocol: TCP
     targetPort: 1025
     appProtocol: smtp
-  type: LoadBalancer
+  type: ClusterIP
   selector:
     app: mail
